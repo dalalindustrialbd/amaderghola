@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের ঘোলা - ঐক্য, উন্নয়ন ও সম্প্রীতির বন্ধন</title>
+    <script src="https://tailwindcss.com"></script>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f3f4f6; }
+        .card-hover:hover { transform: translateY(-4px); transition: all 0.2s ease-in-out; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- ১. টপ বার -->
+    <div class="bg-[#0b3d24] text-white text-xs md:text-sm py-2 px-4 border-b border-green-700">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex flex-wrap items-center gap-4">
+                <span><i class="fa-solid fa-location-dot text-yellow-400 mr-1"></i> ঘোলা, বাংলাদেশ</span>
+                <span class="hidden sm:inline">|</span>
+                <span><i class="fa-regular fa-calendar-days text-yellow-400 mr-1"></i> বৃহস্পতিবার, ২৬ নভেম্বর ২০২৬</span>
+                <span class="hidden md:inline">|</span>
+                <span class="hidden md:inline text-green-200"><i class="fa-solid fa-leaf text-green-400 mr-1"></i> আমাদের গ্রাম, আমাদের পরিচয়, আমাদের দায়িত্ব</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="hidden sm:inline text-gray-300">Follow Us:</span>
+                <a href="#" class="bg-blue-600 w-6 h-6 rounded-full flex items-center justify-center hover:opacity-80"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                <a href="#" class="bg-red-600 w-6 h-6 rounded-full flex items-center justify-center hover:opacity-80"><i class="fa-brands fa-youtube text-xs"></i></a>
+                <a href="#" class="bg-sky-500 w-6 h-6 rounded-full flex items-center justify-center hover:opacity-80"><i class="fa-solid fa-globe text-xs"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ২. লোগো ও টাইটেল হেডার -->
+    <header class="bg-gradient-to-r from-green-50 via-white to-emerald-50 py-4 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-20 h-20 rounded-full bg-green-800 border-4 border-yellow-500 flex flex-col items-center justify-center text-white shadow-md p-1 text-center">
+                    <i class="fa-solid fa-mosque text-2xl text-yellow-300"></i>
+                    <span class="text-[10px] font-bold mt-1 bg-black/60 px-2 rounded">আমাদের ঘোলা</span>
+                </div>
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+                        <span class="text-green-700">আমাদের</span> <span class="text-red-600">ঘোলা</span>
+                    </h1>
+                    <p class="text-sm md:text-base font-semibold text-red-700 flex items-center gap-2 mt-1">
+                        <span class="w-6 h-0.5 bg-red-600 inline-block"></span>
+                        ঐক্য, উন্নয়ন ও সম্প্রীতির বন্ধন
+                        <span class="w-6 h-0.5 bg-red-600 inline-block"></span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center md:text-right">
+                <div class="inline-block bg-white/90 border border-green-200 px-4 py-2 rounded-xl shadow-sm">
+                    <p class="text-blue-800 font-bold text-sm md:text-base">সুন্দর ঘোলা • স্মার্ট ঘোলা</p>
+                    <p class="text-red-600 font-extrabold text-base md:text-lg">সমৃদ্ধ ও মাদকমুক্ত ঘোলা</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ৩. মেইন নেভিগেশন মেনু -->
+    <nav class="bg-[#0e5a36] text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-2 overflow-x-auto">
+            <ul class="flex items-center whitespace-nowrap text-sm md:text-base font-medium">
+                <li><a href="#home" class="bg-yellow-400 text-gray-900 font-bold px-4 py-3 flex items-center gap-2"><i class="fa-solid fa-house"></i> হোম</a></li>
+                <li><a href="#itihas" class="hover:bg-green-700 px-4 py-3 flex items-center gap-2 border-r border-green-700"><i class="fa-solid fa-landmark"></i> ইতিহাস</a></li>
+                <li><a href="#protisthan" class="hover:bg-green-700 px-4 py-3 flex items-center gap-2 border-r border-green-700"><i class="fa-solid fa-building-columns"></i> গুরুত্বপূর্ণ প্রতিষ্ঠান</a></li>
+                <li><a href="#krishi-shikkha" class="hover:bg-green-700 px-4 py-3 flex items-center gap-2 border-r border-green-700"><i class="fa-solid fa-graduation-cap"></i> কৃষি ও শিক্ষা</a></li>
+                <li><a href="#gallery" class="hover:bg-green-700 px-4 py-3 flex items-center gap-2 border-r border-green-700"><i class="fa-regular fa-images"></i> ফটো গ্যালারি</a></li>
+                <li><a href="#ovijog" class="hover:bg-green-700 px-4 py-3 flex items-center gap-2 border-r border-green-700"><i class="fa-solid fa-gavel"></i> দুর্নীতি ও অন্যায়</a></li>
+                <li><a href="#ovijog" class="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-3 flex items-center gap-2"><i class="fa-solid fa-ban"></i> মাদক সেবনকারী ও বিক্রেতা</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ৪. হিরো ব্যানার -->
+    <section id="home" class="relative bg-cover bg-center h-64 md:h-80 flex items-center" style="background-image: linear-gradient(to right, rgba(6, 44, 24, 0.88), rgba(6, 44, 24, 0.3)), url('https://unsplash.com');">
+        <div class="max-w-7xl mx-auto px-6 w-full text-white">
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-2">
+                আমাদের <span class="text-yellow-400">ঘোলা</span>
+            </h2>
+            <p class="text-lg md:text-2xl font-medium text-gray-100 mb-4">একটি সুন্দর, শান্ত ও সমৃদ্ধ গ্রামের নাম</p>
+            <div class="inline-block bg-yellow-400 text-gray-900 font-bold px-5 py-2 rounded-r-full shadow-lg text-sm md:text-base">
+                চলুন গড়ে তুলি আরও সুন্দর ঘোলা...
+            </div>
+        </div>
+    </section>
+
+    <!-- ৫. ৮টি কুইক ক্যাটাগরি কার্ড -->
+    <section class="max-w-7xl mx-auto px-4 -mt-8 relative z-10">
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+            <a href="#itihas" class="card-hover bg-gradient-to-b from-green-500 to-green-700 text-white rounded-xl p-4 text-center shadow-md flex flex-col items-center justify-center">
+                <i class="fa-solid fa-house-chimney text-3xl mb-2"></i>
+                <span class="font-bold text-sm">গ্রামের ইতিহাস</span>
+            </a>
+            <a href="#protisthan" class="card-hover bg-gradient-to-b from-blue-500 to-blue-700 text-white rounded-xl p-4 text-center shadow-md flex flex-col items-center justify-center">
+                <i class="fa-solid fa-school text-3xl mb-2"></i>
+                <span class="font-bold text-sm">স্কুল ও মাদ্রাসা</span>
+            </a>
+            <a href="#krishi-shikkha" class="card-hover bg-gradient-to-b from-orange-400 to-orange-600 text-white rounded-xl p-4 text-center shadow-md flex flex-col items-center justify-center">
+                <i class="fa-solid fa-seedling text-3xl mb-2"></i>
+                <span class="font-bold text-sm">কৃষি ও শিক্ষা</span>
+            </a>
+            <a href="#gallery" class="card-hover bg-gradient-to-b from-purple-500 to-purple-700 text-white rounded-xl p-4 text-center shadow-md flex flex-col items-center justify-center">
+                <i class="fa-regular fa-image text-3xl mb-2"></i>
+                <span class="font-bold text-sm">ফটো গ্যালারি</span>
+            </a>
+            <a href="#ovijog" class="card-hover bg-gradient-to-b from-teal-600 to-teal-800 text-white rounded-xl p-4 text-center shadow-md flex flex-col items-center justify-center">
+                <i class="fa-solid fa-hand-holding-dollar text-3xl mb-2"></i>
+                <span class="font-bold text-sm">অন্যায় ও অত্যাচার</span>
+            </a>
+            <a href="#ovijog" class="card-hover bg-gradient-to-b from-red-500 to-red-700 text-white rounded-xl p-4 text-center shadow-md flex flex-col items-center justify-center">
+                <i class="fa-solid fa-gavel text-3xl mb-2"></i>
+                <span class="font-bold text-sm">দুর্নীতিবাজ</span>
+            </a>
+            <a href="#ovijog" class="card-hover bg-gradient-to-b from-rose-700 to-red-900 text-white rounded-xl p-4 text-center shadow-md flex flex-col items-center justify-center">
+                <i class="fa-solid fa-ban text-3xl mb-2"></i>
+                <span class="font-bold text-sm">মাদক সেবন ও বিক্রয়</span>
+            </a>
+            <a href="#protisthan" class="card-hover bg-gradient-to-b from-emerald-600 to-emerald-800 text-white rounded-xl p-4 text-center shadow-md flex flex-col items-center justify-center">
+                <i class="fa-solid fa-mosque text-3xl mb-2"></i>
+                <span class="font-bold text-sm">মসজিদ, ঈদগাহ ও কবরস্থান</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ৬. ৩ কলাম সেকশন (সর্বশেষ সংবাদ | অভিযোগ বক্স | গ্যালারি) -->
+    <section class="max-w-7xl mx-auto px-4 pt-10 pb-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- বাম কলাম: সর্বশেষ সংবাদ -->
+        <div class="lg:col-span-4 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col">
+            <div class="bg-[#0e5a36] text-white px-4 py-3 flex justify-between items-center">
+                <h3 class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-bullhorn"></i> সর্বশেষ সংবাদ</h3>
+                <a href="#songbad" class="text-xs bg-green-800 px-2 py-1 rounded hover:bg-green-900">সব দেখুন →</a>
+            </div>
+            <div class="p-4 space-y-4 flex-1">
+                <div class="flex gap-3 border-b pb-3">
+                    <img src="https://unsplash.com" alt="সড়ক" class="w-24 h-16 object-cover rounded border">
+                    <div>
+                        <h4 class="font-bold text-sm text-gray-800">ঘোলায় সড়ক সংস্কার কাজ শুরু হয়েছে</h4>
+                        <p class="text-xs text-gray-500 mt-1"><i class="fa-regular fa-clock"></i> ২৪ নভেম্বর ২০২৬</p>
+                    </div>
+                </div>
+                <div class="flex gap-3 border-b pb-3">
+                    <img src="https://unsplash.com" alt="স্কুল" class="w-24 h-16 object-cover rounded border">
+                    <div>
+                        <h4 class="font-bold text-sm text-gray-800">ঘোলা সরকারি প্রাথমিক বিদ্যালয়ে নতুন শ্রেণিকক্ষ</h4>
+                        <p class="text-xs text-gray-500 mt-1"><i class="fa-regular fa-clock"></i> ২৪ নভেম্বর ২০২৬</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <img src="https://unsplash.com" alt="বৃক্ষরোপণ" class="w-24 h-16 object-cover rounded border">
+                    <div>
+                        <h4 class="font-bold text-sm text-gray-800">ঘোলায় বৃক্ষরোপণ কর্মসূচি অনুষ্ঠিত</h4>
+                        <p class="text-xs text-gray-500 mt-1"><i class="fa-regular fa-clock"></i> ২৬ নভেম্বর ২০২৬</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- মাঝের কলাম: মাদক ও অপরাধ সংক্রান্ত অভিযোগ -->
+        <div id="ovijog" class="lg:col-span-4 bg-white rounded-xl shadow-md overflow-hidden border-2 border-red-600">
+            <div class="bg-red-600 text-white px-4 py-3 text-center">
+                <h3 class="font-bold text-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-shield-halved"></i> মাদক ও অপরাধ সংক্রান্ত অভিযোগ
+                </h3>
+            </div>
+            <div class="p-4">
+                <p class="text-center text-xs font-semibold text-red-700 mb-3">
+                    মাদক বিক্রেতা, দুর্নীতি বা অন্যায়-অত্যাচারের প্রমাণসহ অভিযোগ করুন, আপনার পরিচয় সম্পূর্ণ গোপন থাকবে।
+                </p>
+
+                <form onsubmit="handleReportSubmit(event)" class="space-y-3">
+                    <select required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-red-500 bg-gray-50 font-medium">
+                        <option value="">অভিযোগের ধরন নির্বাচন করুন *</option>
+                        <option value="madok">মাদক সেবন ও বিক্রেতা</option>
+                        <option value="durniti">দুর্নীতিবাজ ও অর্থ আত্মসাৎ</option>
+                        <option value="onnay">অন্যায়-অত্যাচার, দালাল ও ভূমিদস্যু</option>
+                    </select>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div class="relative">
+                            <i class="fa-solid fa-user absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                            <input type="text" placeholder="অভিযোগকারীর নাম (ঐচ্ছিক)" class="w-full border border-gray-300 rounded-lg pl-8 pr-2 py-2 text-xs focus:outline-none focus:border-red-500">
+                        </div>
+                        <div class="relative">
+                            <i class="fa-solid fa-user-secret absolute left-3 top-2.5 text-red-500 text-xs"></i>
+                            <input type="text" required placeholder="অভিযুক্ত ব্যক্তির নাম *" class="w-full border border-gray-300 rounded-lg pl-8 pr-2 py-2 text-xs focus:outline-none focus:border-red-500">
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <i class="fa-solid fa-location-dot absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                        <input type="text" required placeholder="ঘটনার স্থান ও ঠিকানা *" class="w-full border border-gray-300 rounded-lg pl-8 pr-3 py-2 text-xs focus:outline-none focus:border-red-500">
+                    </div>
+
+                    <textarea rows="2" required placeholder="ঘটনার বিস্তারিত বিবরণ লিখুন *" class="w-full border border-gray-300 rounded-lg p-2 text-xs focus:outline-none focus:border-red-500"></textarea>
+
+                    <div class="border-2 border-dashed border-blue-400 bg-blue-50 rounded-lg p-3 text-center">
+                        <label class="cursor-pointer block">
+                            <i class="fa-solid fa-cloud-arrow-up text-blue-600 text-xl mb-1"></i>
+                            <span class="block text-xs font-bold text-gray-700">প্রমাণ সংযুক্ত করুন (ছবি, ভিডিও বা ডকুমেন্ট) *</span>
+                            <span class="block text-[10px] text-gray-500">(JPG, PNG, MP4, PDF — সর্বোচ্চ ১০MB)</span>
+                            <input type="file" id="evidenceFile" required accept=".jpg,.jpeg,.png,.mp4,.pdf" class="hidden" onchange="validateFile(this)">
+                            <span id="fileName" class="block text-xs text-green-700 font-semibold mt-1"></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#0e5a36] hover:bg-green-800 text-white font-bold py-2.5 rounded-lg shadow transition flex items-center justify-center gap-2 text-sm">
+                        <i class="fa-solid fa-paper-plane"></i> অভিযোগ জমা দিন
+                    </button>
+
+                    <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-2 text-center text-[11px] font-semibold text-yellow-900">
+                        <i class="fa-solid fa-circle-exclamation text-yellow-600 mr-1"></i> প্রমাণ ছাড়া কোনো মিথ্যা অভিযোগ গ্রহণ করা হবে না।
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ডান কলাম: ছবির গ্যালারি -->
+        <div id="gallery" class="lg:col-span-4 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 flex flex-col">
+            <div class="bg-[#0e5a36] text-white px-4 py-3 flex justify-between items-center">
+                <h3 class="font-bold text-lg flex items-center gap-2"><i class="fa-regular fa-images"></i> ছবির গ্যালারি</h3>
+                <a href="#" class="text-xs bg-green-800 px-2 py-1 rounded hover:bg-green-900">সব দেখুন →</a>
+            </div>
+            <div class="p-4 grid grid-cols-2 gap-3 flex-1">
+                <img src="https://unsplash.com" alt="রাস্তা" class="w-full h-32 object-cover rounded-lg border">
+                <img src="https://unsplash.com" alt="পুকুর" class="w-full h-32 object-cover rounded-lg border">
+                <img src="https://unsplash.com" alt="মসজিদ" class="w-full h-32 object-cover rounded-lg border">
+                <img src="https://unsplash.com" alt="মাঠ" class="w-full h-32 object-cover rounded-lg border">
+            </div>
+        </div>
+    </section>
+
+    <!-- ৭. গ্রামের ইতিহাস সেকশন -->
+    <section id="itihas" class="max-w-7xl mx-auto py-8 px-4">
+        <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+            <div class="bg-[#0e5a36] text-white px-6 py-3">
+                <h2 class="text-xl md:text-2xl font-bold flex items-center gap-2"><i class="fa-solid fa-landmark"></i> ঘোলা গ্রামের ইতিহাস ও ঐতিহ্য</h2>
+            </div>
+            <div class="p-6 leading-relaxed text-base md:text-lg text-gray-700">
+                <p>ঘোলা একটি ঐতিহ্যবাহী, শান্তিপ্রিয় ও সমৃদ্ধ গ্রাম। এখানকার মানুষের আন্তরিকতা, সামাজিক সম্প্রীতি এবং শিক্ষা ও সংস্কৃতির প্রতি অনুরাগ গ্রামটিকে একটি অনন্য উচ্চতায় নিয়ে গেছে। মহান মুক্তিযুদ্ধ থেকে শুরু করে দেশের প্রতিটি উন্নয়নমূলক কর্মকাণ্ডে ঘোলা গ্রামের কৃতি সন্তানদের গৌরবোজ্জ্বল অবদান রয়েছে।</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ৮. গুরুত্বপূর্ণ প্রতিষ্ঠানসমূহ (প্রাইমারি স্কুল, হাই স্কুল, মাদ্রাসা, মসজিদ, ঈদগাহ, কবরস্থান) -->
+    <section id="protisthan" class="max-w-7xl mx-auto py-8 px-4">
+        <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+            <div class="bg-[#0e5a36] text-white px-6 py-3">
+                <h2 class="text-xl md:text-2xl font-bold flex items-center gap-2"><i class="fa-solid fa-building-columns"></i> গ্রামের গুরুত্বপূর্ণ প্রতিষ্ঠানসমূহ</h2>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-emerald-50/60 p-5 rounded-xl border-l-4 border-green-700 shadow-sm">
+                    <h3 class="text-xl font-bold text-green-900 mb-1"><i class="fa-solid fa-child-reaching mr-2"></i>প্রাইমারি স্কুল</h3>
+                    <p class="text-xs font-semibold text-gray-600 mb-2">ঘোলা সরকারি প্রাথমিক বিদ্যালয়</p>
+                    <p class="text-sm text-gray-700">গ্রামের কোমলমতি শিশুদের প্রাথমিক ও বুনিয়াদি শিক্ষার প্রধান বিদ্যাপীঠ।</p>
+                </div>
+                <div class="bg-emerald-50/60 p-5 rounded-xl border-l-4 border-blue-700 shadow-sm">
+                    <h3 class="text-xl font-bold text-blue-900 mb-1"><i class="fa-solid fa-school mr-2"></i>হাই স্কুল</h3>
+                    <p class="text-xs font-semibold text-gray-600 mb-2">ঘোলা উচ্চ বিদ্যালয়</p>
