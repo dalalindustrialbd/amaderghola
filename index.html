@@ -4,49 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>আমাদের ঘোলা - ঐক্য, উন্নয়ন ও সম্প্রীতির বন্ধন</title>
-    <link href="https://googleapis.com" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Hind Siliguri', Arial, sans-serif; background-color: #f3f4f6; color: #1f2937; line-height: 1.6; }
+        body { font-family: Arial, sans-serif; background-color: #f3f4f6; color: #1f2937; line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1240px; margin: 0 auto; padding: 0 15px; }
 
-        /* ১. টপ বার */
         .top-bar { background-color: #0b3d24; color: #ffffff; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #15803d; }
         .top-bar-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .social-icons a { display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; color: #fff; font-weight: bold; font-size: 12px; margin-left: 5px; }
 
-        /* ২. হেডার ও লোগো */
         .header { background: linear-gradient(90deg, #ecfdf5 0%, #ffffff 50%, #f0fdf4 100%); padding: 18px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .logo-box { display: flex; align-items: center; gap: 15px; }
-        .logo-circle { width: 75px; height: 75px; border-radius: 50%; background: #0e5a36; border: 4px solid #eab308; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-weight: bold; font-size: 11px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .logo-circle { width: 75px; height: 75px; border-radius: 50%; background: #0e5a36; border: 4px solid #eab308; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-weight: bold; font-size: 11px; }
         .site-title { font-size: 40px; font-weight: 800; line-height: 1.1; }
         .site-title .green { color: #15803d; }
         .site-title .red { color: #dc2626; }
         .tagline { color: #b91c1c; font-weight: 600; font-size: 15px; margin-top: 4px; }
-        .slogan-badge { background: #ffffff; border: 1px solid #bbf7d0; padding: 10px 18px; border-radius: 10px; text-align: right; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .slogan-badge { background: #ffffff; border: 1px solid #bbf7d0; padding: 10px 18px; border-radius: 10px; text-align: right; }
 
-        /* ৩. মেনু বার */
-        .navbar { background-color: #0e5a36; color: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 3px 6px rgba(0,0,0,0.15); }
+        .navbar { background-color: #0e5a36; color: #ffffff; position: sticky; top: 0; z-index: 100; }
         .nav-list { list-style: none; display: flex; flex-wrap: wrap; }
-        .nav-list li a { display: block; padding: 12px 16px; font-weight: 600; font-size: 15px; border-right: 1px solid #166534; transition: 0.2s; }
-        .nav-list li a:hover { background-color: #15803d; }
+        .nav-list li a { display: block; padding: 12px 16px; font-weight: 600; font-size: 15px; border-right: 1px solid #166534; }
         .nav-list li a.active { background-color: #facc15; color: #111827; font-weight: 700; }
         .nav-list li a.danger-btn { background-color: #dc2626; color: #ffffff; font-weight: 700; }
-        .nav-list li a.danger-btn:hover { background-color: #b91c1c; }
-
-        /* ৪. হিরো ব্যানার */
         .hero { background: linear-gradient(90deg, rgba(6, 44, 24, 0.9) 0%, rgba(14, 90, 54, 0.75) 100%), url('https://picsum.photos') center/cover no-repeat; color: #ffffff; padding: 55px 0 75px; }
         .hero h2 { font-size: 42px; font-weight: 800; margin-bottom: 8px; }
         .hero h2 span { color: #facc15; }
         .hero p { font-size: 20px; margin-bottom: 18px; color: #e5e7eb; }
         .hero-badge { display: inline-block; background: #facc15; color: #111827; font-weight: 700; padding: 8px 22px; border-radius: 0 25px 25px 0; font-size: 15px; }
 
-        /* ৫. ৮টি রঙিন ক্যাটাগরি কার্ড */
         .cards-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; margin-top: -35px; position: relative; z-index: 10; }
-        .cat-card { color: #ffffff; padding: 16px 10px; border-radius: 12px; text-align: center; font-weight: 700; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); transition: 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .cat-card:hover { transform: translateY(-4px); }
+        .cat-card { color: #ffffff; padding: 16px 10px; border-radius: 12px; text-align: center; font-weight: 700; font-size: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .cat-icon { font-size: 26px; margin-bottom: 8px; }
         .c1 { background: linear-gradient(180deg, #22c55e, #15803d); }
         .c2 { background: linear-gradient(180deg, #3b82f6, #1d4ed8); }
@@ -57,35 +47,28 @@
         .c7 { background: linear-gradient(180deg, #e11d48, #881337); }
         .c8 { background: linear-gradient(180deg, #10b981, #047857); }
 
-        /* ৬. মূল ৩ কলাম সেকশন (বাম - মাঝ - ডান) */
         .main-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 22px; margin-top: 35px; }
         .panel { background: #ffffff; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); overflow: hidden; border: 1px solid #e5e7eb; }
         .panel-red { border: 2px solid #dc2626; }
         .panel-header { background: #0e5a36; color: #ffffff; padding: 12px 16px; font-weight: 700; font-size: 18px; display: flex; justify-content: space-between; align-items: center; }
         .panel-header-red { background: #dc2626; color: #ffffff; padding: 12px 16px; font-weight: 700; font-size: 18px; text-align: center; }
         .panel-body { padding: 16px; }
-
-        /* সংবাদ আইটেম */
         .news-item { display: flex; gap: 12px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid #f3f4f6; }
         .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         .news-item img { width: 95px; height: 65px; object-fit: cover; border-radius: 6px; border: 1px solid #d1d5db; }
         .news-title { font-weight: 700; font-size: 14px; color: #1f2937; }
         .news-date { font-size: 12px; color: #6b7280; margin-top: 4px; }
 
-        /* অভিযোগ ফর্ম */
         .form-note { color: #b91c1c; font-size: 13px; font-weight: 600; text-align: center; margin-bottom: 12px; }
         .form-control { width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 13px; margin-bottom: 10px; font-family: inherit; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .upload-box { border: 2px dashed #60a5fa; background: #eff6ff; padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 12px; cursor: pointer; display: block; }
-        .submit-btn { width: 100%; background: #0e5a36; color: #ffffff; border: none; padding: 11px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; font-family: inherit; }
-        .submit-btn:hover { background: #064e3b; }
+        .submit-btn { width: 100%; background: #0e5a36; color: #ffffff; border: none; padding: 11px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
         .warning-box { background: #fefce8; border: 1px solid #fde047; color: #854d0e; font-size: 12px; font-weight: 600; text-align: center; padding: 8px; border-radius: 6px; margin-top: 10px; }
 
-        /* গ্যালারি */
         .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .gallery-grid img { width: 100%; height: 125px; object-fit: cover; border-radius: 8px; border: 1px solid #e5e7eb; }
 
-        /* ৭. ইতিহাস ও প্রতিষ্ঠান সেকশন */
         .section-box { margin-top: 30px; background: #ffffff; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid #e5e7eb; }
         .inst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 20px; }
         .inst-card { background: #f0fdf4; border-left: 5px solid #15803d; padding: 16px; border-radius: 8px; }
@@ -93,11 +76,9 @@
         .inst-card .sub { font-size: 13px; font-weight: 700; color: #374151; margin-bottom: 6px; }
         .inst-card p { font-size: 14px; color: #4b5563; }
 
-        /* ফুটার */
         .footer { background: #0b3d24; color: #ffffff; padding: 18px 0; margin-top: 40px; border-top: 4px solid #facc15; font-size: 14px; }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
 
-        /* মোবাইল রেসপন্সিভ */
         @media (max-width: 900px) {
             .cards-grid { grid-template-columns: repeat(4, 1fr); }
             .main-grid { grid-template-columns: 1fr; }
@@ -111,7 +92,6 @@
 </head>
 <body>
 
-    <!-- টপ বার -->
     <div class="top-bar">
         <div class="container top-bar-inner">
             <div>📍 ঘোলা, বাংলাদেশ &nbsp;|&nbsp; 📅 বৃহস্পতিবার, ২৬ নভেম্বর ২০২৬ &nbsp;|&nbsp; 🌿 আমাদের গ্রাম, আমাদের পরিচয়, আমাদের দায়িত্ব</div>
@@ -124,7 +104,6 @@
         </div>
     </div>
 
-    <!-- হেডার -->
     <header class="header">
         <div class="container header-inner">
             <div class="logo-box">
@@ -140,3 +119,203 @@
             <div class="slogan-badge">
                 <div style="color:#1e40af; font-weight:700; font-size:15px;">সুন্দর ঘোলা • স্মার্ট ঘোলা</div>
                 <div style="color:#dc2626; font-weight:800; font-size:18px;">সমৃদ্ধ ও মাদকমুক্ত ঘোলা</div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#home" class="active">🏠 হোম</a></li>
+                <li><a href="#itihas">📜 ইতিহাস</a></li>
+                <li><a href="#protisthan">🏫 গুরুত্বপূর্ণ প্রতিষ্ঠান</a></li>
+                <li><a href="#krishi">🌾 কৃষি ও শিক্ষা</a></li>
+                <li><a href="#gallery">🖼️ ফটো গ্যালারি</a></li>
+                <li><a href="#ovijog">⚖️ দুর্নীতি ও অন্যায়</a></li>
+                <li><a href="#ovijog" class="danger-btn">🚫 মাদক সেবনকারী ও বিক্রেতা</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>আমাদের <span>ঘোলা</span></h2>
+            <p>একটি সুন্দর, শান্ত ও সমৃদ্ধ গ্রামের নাম</p>
+            <div class="hero-badge">চলুন গড়ে তুলি আরও সুন্দর ঘোলা...</div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="cards-grid">
+            <a href="#itihas" class="cat-card c1"><span class="cat-icon">🏡</span>গ্রামের ইতিহাস</a>
+            <a href="#protisthan" class="cat-card c2"><span class="cat-icon">🏫</span>স্কুল ও মাদ্রাসা</a>
+            <a href="#krishi" class="cat-card c3"><span class="cat-icon">🌾</span>কৃষি ও শিক্ষা</a>
+            <a href="#gallery" class="cat-card c4"><span class="cat-icon">🖼️</span>ফটো গ্যালারি</a>
+            <a href="#ovijog" class="cat-card c5"><span class="cat-icon">⚖️</span>অন্যায় ও অত্যাচার</a>
+            <a href="#ovijog" class="cat-card c6"><span class="cat-icon">🔨</span>দুর্নীতিবাজ</a>
+            <a href="#ovijog" class="cat-card c7"><span class="cat-icon">🚫</span>মাদক সেবন ও বিক্রয়</a>
+            <a href="#protisthan" class="cat-card c8"><span class="cat-icon">🕌</span>মসজিদ, ঈদগাহ ও কবরস্থান</a>
+        </div>
+        <div class="main-grid">
+            <div class="panel">
+                <div class="panel-header">
+                    <span>📢 সর্বশেষ সংবাদ</span>
+                    <span style="font-size:12px; background:#064e3b; padding:3px 8px; border-radius:4px;">সব দেখুন →</span>
+                </div>
+                <div class="panel-body">
+                    <div class="news-item">
+                        <img src="https://picsum.photos" alt="সড়ক">
+                        <div>
+                            <div class="news-title">ঘোলায় সড়ক সংস্কার কাজ শুরু হয়েছে</div>
+                            <div class="news-date">🕒 ২৪ নভেম্বর ২০২৬</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://picsum.photos" alt="স্কুল">
+                        <div>
+                            <div class="news-title">ঘোলা সরকারি প্রাথমিক বিদ্যালয়ে নতুন শ্রেণিকক্ষ</div>
+                            <div class="news-date">🕒 ২৪ নভেম্বর ২০২৬</div>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://picsum.photos" alt="বৃক্ষরোপণ">
+                        <div>
+                            <div class="news-title">ঘোলায় বৃক্ষরোপণ কর্মসূচি অনুষ্ঠিত</div>
+                            <div class="news-date">🕒 ২৬ নভেম্বর ২০২৬</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ovijog" class="panel panel-red">
+                <div class="panel-header-red">🛡️ মাদক ও অপরাধ সংক্রান্ত অভিযোগ</div>
+                <div class="panel-body">
+                    <p class="form-note">মাদক বিক্রেতা, দুর্নীতি বা অন্যায়ের প্রমাণসহ অভিযোগ করুন, আপনার পরিচয় গোপন রাখা হবে।</p>
+                    <form onsubmit="submitForm(event)">
+                        <select class="form-control" required>
+                            <option value="">অভিযোগের ধরন নির্বাচন করুন *</option>
+                            <option value="madok">মাদক সেবন ও বিক্রেতা</option>
+                            <option value="durniti">দুর্নীতিবাজ ও অর্থ আত্মসাৎ</option>
+                            <option value="onnay">অন্যায়-অত্যাচার ও দালাল</option>
+                        </select>
+                        <div class="form-row">
+                            <input type="text" class="form-control" placeholder="আপনার নাম (ঐচ্ছিক)">
+                            <input type="text" class="form-control" required placeholder="অভিযুক্ত ব্যক্তির নাম *">
+                        </div>
+                        <input type="text" class="form-control" required placeholder="ঘটনার স্থান ও ঠিকানা *">
+                        <textarea rows="2" class="form-control" required placeholder="ঘটনার বিস্তারিত বিবরণ লিখুন *"></textarea>
+                        
+                        <label class="upload-box">
+                            <div style="color:#2563eb; font-weight:700; font-size:13px;">☁️ প্রমাণ সংযুক্ত করুন (ছবি, ভিডিও বা PDF) *</div>
+                            <div style="font-size:11px; color:#6b7280;">সর্বোচ্চ ১০MB ফাইল আপলোড করা যাবে</div>
+                            <input type="file" required accept=".jpg,.jpeg,.png,.mp4,.pdf" style="display:none;" onchange="showFile(this)">
+                            <div id="file-label" style="color:#15803d; font-size:12px; font-weight:700; margin-top:4px;"></div>
+                        </label>
+
+                        <button type="submit" class="submit-btn">✈️ অভিযোগ জমা দিন</button>
+                        <div class="warning-box">⚠️ প্রমাণ ছাড়া কোনো মিথ্যা অভিযোগ গ্রহণ করা হবে না।</div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="gallery" class="panel">
+                <div class="panel-header">
+                    <span>🖼️ ছবির গ্যালারি</span>
+                    <span style="font-size:12px; background:#064e3b; padding:3px 8px; border-radius:4px;">সব দেখুন →</span>
+                </div>
+                <div class="panel-body">
+                    <div class="gallery-grid">
+                        <img src="https://picsum.photos" alt="প্রকৃতি">
+                        <img src="https://picsum.photos" alt="রাস্তা">
+                        <img src="https://picsum.photos" alt="সবুজ মাঠ">
+                        <img src="https://picsum.photos" alt="গ্রাম">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="itihas" class="section-box">
+            <div class="panel-header">📜 ঘোলা গ্রামের ইতিহাস ও ঐতিহ্য</div>
+            <div class="panel-body" style="font-size:16px; color:#374151;">
+                ঘোলা একটি ঐতিহ্যবাহী, শান্তিপ্রিয় ও সমৃদ্ধ গ্রাম। এখানকার মানুষের আন্তরিকতা, সামাজিক সম্প্রীতি এবং শিক্ষা ও সংস্কৃতির প্রতি অনুরাগ গ্রামটিকে একটি অনন্য উচ্চতায় নিয়ে গেছে। মহান মুক্তিযুদ্ধ থেকে শুরু করে দেশের প্রতিটি উন্নয়নমূলক কর্মকাণ্ডে ঘোলা গ্রামের কৃতি সন্তানদের গৌরবোজ্জ্বল অবদান রয়েছে।
+            </div>
+        </div>
+
+        <div id="protisthan" class="section-box">
+            <div class="panel-header">🏫 গ্রামের গুরুত্বপূর্ণ প্রতিষ্ঠানসমূহ</div>
+            <div class="inst-grid">
+                <div class="inst-card">
+                    <h4>🎒 প্রাইমারি স্কুল</h4>
+                    <div class="sub">ঘোলা সরকারি প্রাথমিক বিদ্যালয়</div>
+                    <p>গ্রামের কোমলমতি শিশুদের প্রাথমিক ও বুনিয়াদি শিক্ষার প্রধান বিদ্যাপীঠ।</p>
+                </div>
+                <div class="inst-card" style="border-left-color:#1d4ed8; background:#eff6ff;">
+                    <h4 style="color:#1e3a8a;">🏫 হাই স্কুল</h4>
+                    <div class="sub">ঘোলা উচ্চ বিদ্যালয়</div>
+                    <p>মাধ্যমিক পর্যায়ে আধুনিক ও মানসম্মত শিক্ষা বিস্তারে গুরুত্বপূর্ণ ভূমিকা রাখছে।</p>
+                </div>
+                <div class="inst-card" style="border-left-color:#0f766e; background:#f0fdfa;">
+                    <h4 style="color:#115e59;">📖 মাদ্রাসা</h4>
+                    <div class="sub">ঘোলা ইসলামিয়া মাদ্রাসা ও এতিমখানা</div>
+                    <p>দ্বীনি, কুরআনিক ও নৈতিক শিক্ষার মাধ্যমে আদর্শ মানুষ গড়ার প্রতিষ্ঠান।</p>
+                </div>
+                <div class="inst-card" style="border-left-color:#047857;">
+                    <h4>🕌 মসজিদসমূহ</h4>
+                    <div class="sub">ঘোলা কেন্দ্রীয় জামে মসজিদ ও মহল্লার মসজিদ</div>
+                    <p>পাঁচ ওয়াক্ত নামাজ, জুমার জামাত এবং ইসলামি আলোচনার কেন্দ্রবিন্দু।</p>
+                </div>
+                <div class="inst-card" style="border-left-color:#d97706; background:#fffbeb;">
+                    <h4 style="color:#92400e;">🕋 কেন্দ্রীয় ঈদগাহ</h4>
+                    <div class="sub">ঘোলা কেন্দ্রীয় ঈদগাহ ময়দান</div>
+                    <p>প্রতি বছর ঈদুল ফিতর ও ঈদুল আযহার প্রধান জামাত এখানে অনুষ্ঠিত হয়।</p>
+                </div>
+                <div class="inst-card" style="border-left-color:#374151; background:#f9fafb;">
+                    <h4 style="color:#111827;">🪦 কবরস্থান</h4>
+                    <div class="sub">ঘোলা সামাজিক কবরস্থান</div>
+                    <p>গ্রামবাসীর সম্মিলিত পরিচালনা কমিটি দ্বারা সংরক্ষিত সামাজিক কবরস্থান।</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="krishi" class="section-box">
+            <div class="panel-header">🌾 কৃষি ও শিক্ষা ব্যবস্থা</div>
+            <div class="inst-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="inst-card">
+                    <h4>🌱 কৃষি ও ফসল</h4>
+                    <p>ঘোলা গ্রামের উর্বর মাটিতে ধান, পাট, গম, আলু এবং নানা ধরনের মৌসুমি শাকসবজি প্রচুর পরিমাণে উৎপাদিত হয়।</p>
+                </div>
+                <div class="inst-card" style="border-left-color:#1d4ed8; background:#eff6ff;">
+                    <h4 style="color:#1e3a8a;">🎓 শিক্ষা ব্যবস্থা</h4>
+                    <p>শিক্ষার আলোয় আলোকিত আমাদের ঘোলা গ্রাম। গ্রামের শিক্ষার্থীরা প্রতি বছর বোর্ড পরীক্ষায় কৃতিত্বের স্বাক্ষর রাখছে।</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>📍 ঘোলা, বাংলাদেশ &nbsp;|&nbsp; ✉️ info@amaderghola.eu.org &nbsp;|&nbsp; 🌐 www.amaderghola.eu.org</div>
+            <div style="color:#fde047; font-weight:700;">— সাথে থাকুন, গড়ুন উন্নত ঘোলা —</div>
+        </div>
+    </footer>
+
+    <script>
+        function showFile(input) {
+            if (input.files && input.files[0]) {
+                if (input.files[0].size > 10 * 1024 * 1024) {
+                    alert("ফাইলের সাইজ ১০MB-এর বেশি হতে পারবে না!");
+                    input.value = "";
+                    return;
+                }
+                document.getElementById('file-label').textContent = "✅ নির্বাচিত ফাইল: " + input.files[0].name;
+            }
+        }
+        function submitForm(e) {
+            e.preventDefault();
+            alert("ধন্যবাদ! আপনার অভিযোগ ও প্রমাণ গোপনে অ্যাডমিনের কাছে পাঠানো হয়েছে।");
+            e.target.reset();
+            document.getElementById('file-label').textContent = "";
+        }
+    </script>
+
+</body>
+</html>
