@@ -15,7 +15,7 @@
         .login-box h2 { text-align: center; color: #0e5a36; margin-bottom: 20px; }
         .input-group { margin-bottom: 15px; }
         .input-group label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
-        .input-group input, .input-group textarea, .input-group select { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
+        .input-group input, .input-group textarea { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
         .btn-primary { width: 100%; background: #0e5a36; color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
         .btn-primary:hover { background: #064e3b; }
         .container { max-width: 1200px; margin: 25px auto; padding: 0 15px; }
@@ -32,7 +32,6 @@
     </style>
 </head>
 <body>
-    <!-- ১. অ্যাডমিন লগইন স্ক্রিন -->
     <div id="login-section" class="login-box">
         <h2>🔐 আমাদের ঘোলা - অ্যাডমিন লগইন</h2>
         <form onsubmit="adminLogin(event)">
@@ -44,12 +43,10 @@
                 <label>পাসওয়ার্ড</label>
                 <input type="password" id="admin-password" required placeholder="পাসওয়ার্ড দিন">
             </div>
-            <button type="submit" class="btn-primary">লগইন করুন</button>
+            <button type="submit" id="login-btn" class="btn-primary">লগইন করুন</button>
             <p id="login-error" style="color:red; text-align:center; margin-top:10px; font-size:13px;"></p>
         </form>
     </div>
-
-    <!-- ২. অ্যাডমিন ড্যাশবোর্ড -->
     <div id="dashboard-section" class="hidden">
         <div class="top-header">
             <h1>🛡️ আমাদের ঘোলা — অ্যাডমিন ড্যাশবোর্ড</h1>
@@ -66,7 +63,6 @@
                 <button class="tab-btn" onclick="showTab('complaints-tab', this)">🚨 গোপন অভিযোগসমূহ (Complaints)</button>
             </div>
 
-            <!-- সংবাদ ট্যাব -->
             <div id="news-tab" class="tab-content">
                 <div class="card">
                     <h3>➕ নতুন সংবাদ প্রকাশ করুন</h3>
@@ -84,7 +80,6 @@
                 </div>
             </div>
 
-            <!-- গ্যালারি ট্যাব -->
             <div id="gallery-tab" class="tab-content hidden">
                 <div class="card">
                     <h3>➕ গ্যালারিতে নতুন ছবি যোগ করুন</h3>
@@ -101,7 +96,6 @@
                 </div>
             </div>
 
-            <!-- অভিযোগ ট্যাব -->
             <div id="complaints-tab" class="tab-content hidden">
                 <div class="card">
                     <h3>🚨 গ্রামবাসীর গোপন অভিযোগসমূহ</h3>
@@ -113,19 +107,19 @@
 
     <script>
         const SUPABASE_URL = 'https://supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_CVbcAPu0z4YeiWnakGJKmw_ShI3ainP';
-        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lbmpyeGJweHFxdnpvcW9vZWtpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU4MTA3NTcsImV4cCI6MjExMTM4Njc1N30.sm1ul3_428F0omBVlxOVKtaXX8dewjDeis6W5s9bA20';
+        const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         async function checkAuth() {
             const { data: { session } } = await sb.auth.getSession();
             if (session) {
-                const { data: roleData } = await sb.from('user_roles').select('role').eq('user_id', session.user.id).single();
+                const { data: roleData, error } = await sb.from('user_roles').select('role').eq('user_id', session.user.id).single();
                 if (roleData && roleData.role === 'admin') {
                     document.getElementById('login-section').classList.add('hidden');
                     document.getElementById('dashboard-section').classList.remove('hidden');
                     loadAllData();
                 } else {
-                    alert("দুঃখিত! আপনার অ্যাডমিন পারমিশন নেই।");
+                    document.getElementById('login-error').textContent = "অ্যাডমিন পারমিশন নেই! SQL-এ user_roles চেক করুন।";
                     await sb.auth.signOut();
                 }
             }
@@ -134,10 +128,15 @@
 
         async function adminLogin(e) {
             e.preventDefault();
+            const btn = document.getElementById('login-btn');
+            const errBox = document.getElementById('login-error');
+            btn.textContent = "লগইন হচ্ছে...";
+            errBox.textContent = "";
             const email = document.getElementById('admin-email').value;
             const password = document.getElementById('admin-password').value;
             const { error } = await sb.auth.signInWithPassword({ email, password });
-            if (error) { document.getElementById('login-error').textContent = "ভুল ইমেইল বা পাসওয়ার্ড!"; }
+            btn.textContent = "লগইন করুন";
+            if (error) { errBox.textContent = "এরর: " + error.message; }
             else { checkAuth(); }
         }
 
