@@ -120,6 +120,25 @@
       .main-grid .panel-red { grid-column: 1 / -1; grid-row: 1; }
       .inst-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    /* Tablet: keep the full site, but prevent navigation and content overflow */
+    @media (min-width: 651px) and (max-width: 800px) {
+      .container { width: calc(100% - 28px); }
+      .top-inner { gap: 6px 12px; }
+      .top-bar { font-size: 11px; }
+      .nav-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .nav-list a { text-align: center; padding: 10px 5px; font-size: 12px; }
+      .hero { padding: 48px 0 68px; overflow: hidden; }
+      .hero .container { padding-inline: 8px; }
+      .hero h2 { font-size: clamp(30px, 6vw, 42px); overflow-wrap: anywhere; }
+      .hero p { font-size: 16px; }
+      .cards-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+      .cat-card { min-width: 0; font-size: 12px; }
+      .main-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .main-grid .panel-red { grid-column: 1 / -1; grid-row: 1; }
+      .form-row { grid-template-columns: 1fr 1fr; }
+      .inst-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     @media (max-width: 650px) {
       .container { width: min(100% - 22px, 1240px); }
       .top-inner { justify-content: center; text-align: center; }
@@ -129,11 +148,16 @@
       .site-title { font-size: 30px; }
       .tagline { font-size: 11px; }
       .slogan { text-align: center; width: 100%; }
-      .nav-list { display: grid; grid-template-columns: repeat(2, 1fr); }
-      .nav-list a { text-align: center; padding: 10px 6px; font-size: 12px; }
-      .hero { padding: 43px 0 62px; }
-      .hero p { font-size: 15px; }
-      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+      .nav-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-list li, .nav-list a { min-width: 0; }
+      .nav-list a { text-align: center; padding: 10px 5px; font-size: 11px; overflow-wrap: anywhere; }
+      .hero { padding: 38px 0 58px; overflow: hidden; }
+      .hero .container { padding-inline: 5px; }
+      .hero h2 { font-size: clamp(27px, 8vw, 36px); overflow-wrap: anywhere; }
+      .hero p { font-size: 14px; }
+      .hero-badge { max-width: 100%; padding: 8px 14px; font-size: 12px; }
+      .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .cat-card { min-width: 0; padding-inline: 6px; overflow-wrap: anywhere; }
       .cat-card { min-height: 98px; font-size: 12px; }
       .main-grid { grid-template-columns: 1fr; gap: 15px; }
       .main-grid .panel-red { grid-column: auto; grid-row: auto; }
