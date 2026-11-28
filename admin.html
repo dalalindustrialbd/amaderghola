@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অ্যাডমিন প্যানেল - আমাদের ঘোলা</title>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f3f4f6; color: #1f2937; }
+        .top-header { background: #0b3d24; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid #facc15; }
+        .top-header h1 { font-size: 22px; }
+        .btn-logout { background: #dc2626; color: #fff; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .login-box { max-width: 400px; margin: 80px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #0e5a36; }
+        .login-box h2 { text-align: center; color: #0e5a36; margin-bottom: 20px; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
+        .input-group input, .input-group textarea, .input-group select { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
+        .btn-primary { width: 100%; background: #0e5a36; color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        .btn-primary:hover { background: #064e3b; }
+        .container { max-width: 1200px; margin: 25px auto; padding: 0 15px; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn { padding: 10px 20px; background: #fff; border: 2px solid #0e5a36; color: #0e5a36; font-weight: bold; border-radius: 8px; cursor: pointer; }
+        .tab-btn.active { background: #0e5a36; color: #fff; }
+        .card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; }
+        .card h3 { color: #0e5a36; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+        th, td { border: 1px solid #e5e7eb; padding: 10px; text-align: left; }
+        th { background: #0e5a36; color: #fff; }
+        .btn-del { background: #dc2626; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <!-- ১. অ্যাডমিন লগইন স্ক্রিন -->
+    <div id="login-section" class="login-box">
+        <h2>🔐 আমাদের ঘোলা - অ্যাডমিন লগইন</h2>
+        <form onsubmit="adminLogin(event)">
+            <div class="input-group">
+                <label>অ্যাডমিন ইমেইল</label>
+                <input type="email" id="admin-email" required placeholder="আপনার ইমেইল দিন">
+            </div>
+            <div class="input-group">
+                <label>পাসওয়ার্ড</label>
+                <input type="password" id="admin-password" required placeholder="পাসওয়ার্ড দিন">
+            </div>
+            <button type="submit" class="btn-primary">লগইন করুন</button>
+            <p id="login-error" style="color:red; text-align:center; margin-top:10px; font-size:13px;"></p>
+        </form>
+    </div>
+
+    <!-- ২. অ্যাডমিন ড্যাশবোর্ড -->
+    <div id="dashboard-section" class="hidden">
+        <div class="top-header">
+            <h1>🛡️ আমাদের ঘোলা — অ্যাডমিন ড্যাশবোর্ড</h1>
+            <div>
+                <a href="index.html" style="color:#facc15; margin-right:15px; font-weight:bold;">🌐 মূল ওয়েবসাইট দেখুন</a>
+                <button class="btn-logout" onclick="adminLogout()">লগআউট</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('news-tab', this)">📢 সংবাদ পরিচালনা (News)</button>
+                <button class="tab-btn" onclick="showTab('gallery-tab', this)">🖼️ গ্যালারি পরিচালনা (Gallery)</button>
+                <button class="tab-btn" onclick="showTab('complaints-tab', this)">🚨 গোপন অভিযোগসমূহ (Complaints)</button>
+            </div>
+
+            <!-- সংবাদ ট্যাব -->
+            <div id="news-tab" class="tab-content">
+                <div class="card">
+                    <h3>➕ নতুন সংবাদ প্রকাশ করুন</h3>
+                    <form onsubmit="addNews(event)">
+                        <div class="input-group"><label>সংবাদের শিরোনাম *</label><input type="text" id="news-title" required></div>
+                        <div class="input-group"><label>সংক্ষিপ্ত সারসংক্ষেপ</label><input type="text" id="news-summary"></div>
+                        <div class="input-group"><label>বিস্তারিত সংবাদ *</label><textarea id="news-content" rows="3" required></textarea></div>
+                        <div class="input-group"><label>ছবির লিংক (Cover Image URL)</label><input type="text" id="news-img" placeholder="যেমন: rasta.jpg বা ছবির লিংক"></div>
+                        <button type="submit" class="btn-primary">সংবাদ প্রকাশ করুন</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>📋 প্রকাশিত সংবাদের তালিকা</h3>
+                    <table><thead><tr><th>শিরোনাম</th><th>সারসংক্ষেপ</th><th>অ্যাকশন</th></tr></thead><tbody id="news-list"></tbody></table>
+                </div>
+            </div>
+
+            <!-- গ্যালারি ট্যাব -->
+            <div id="gallery-tab" class="tab-content hidden">
+                <div class="card">
+                    <h3>➕ গ্যালারিতে নতুন ছবি যোগ করুন</h3>
+                    <form onsubmit="addGallery(event)">
+                        <div class="input-group"><label>ছবির শিরোনাম *</label><input type="text" id="gal-title" required></div>
+                        <div class="input-group"><label>বিবরণ</label><input type="text" id="gal-desc"></div>
+                        <div class="input-group"><label>ছবির লিংক (Image URL) *</label><input type="text" id="gal-url" required placeholder="যেমন: mosjid.jpg বা ছবির লিংক"></div>
+                        <button type="submit" class="btn-primary">ছবি যোগ করুন</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>🖼️ গ্যালারির ছবিসমূহ</h3>
+                    <table><thead><tr><th>শিরোনাম</th><th>ছবির লিংক</th><th>অ্যাকশন</th></tr></thead><tbody id="gallery-list"></tbody></table>
+                </div>
+            </div>
+
+            <!-- অভিযোগ ট্যাব -->
+            <div id="complaints-tab" class="tab-content hidden">
+                <div class="card">
+                    <h3>🚨 গ্রামবাসীর গোপন অভিযোগসমূহ</h3>
+                    <table><thead><tr><th>ধরন</th><th>অভিযুক্তের নাম</th><th>স্থান</th><th>বিবরণ</th><th>অভিযোগকারী</th><th>অ্যাকশন</th></tr></thead><tbody id="complaints-list"></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_CVbcAPu0z4YeiWnakGJKmw_ShI3ainP';
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function checkAuth() {
+            const { data: { session } } = await sb.auth.getSession();
+            if (session) {
+                const { data: roleData } = await sb.from('user_roles').select('role').eq('user_id', session.user.id).single();
+                if (roleData && roleData.role === 'admin') {
+                    document.getElementById('login-section').classList.add('hidden');
+                    document.getElementById('dashboard-section').classList.remove('hidden');
+                    loadAllData();
+                } else {
+                    alert("দুঃখিত! আপনার অ্যাডমিন পারমিশন নেই।");
+                    await sb.auth.signOut();
+                }
+            }
+        }
+        checkAuth();
+
+        async function adminLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            const { error } = await sb.auth.signInWithPassword({ email, password });
+            if (error) { document.getElementById('login-error').textContent = "ভুল ইমেইল বা পাসওয়ার্ড!"; }
+            else { checkAuth(); }
+        }
+
+        async function adminLogout() { await sb.auth.signOut(); location.reload(); }
+
+        function showTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.remove('hidden');
+            btn.classList.add('active');
+        }
+
+        async function loadAllData() {
+            const { data: news } = await sb.from('news').select('*').order('created_at', { ascending: false });
+            document.getElementById('news-list').innerHTML = (news || []).map(n => `<tr><td>${n.title}</td><td>${n.summary || ''}</td><td><button class="btn-del" onclick="delItem('news','${n.id}')">মুছুন</button></td></tr>`).join('');
+
+            const { data: gal } = await sb.from('gallery').select('*').order('created_at', { ascending: false });
+            document.getElementById('gallery-list').innerHTML = (gal || []).map(g => `<tr><td>${g.title}</td><td>${g.image_url}</td><td><button class="btn-del" onclick="delItem('gallery','${g.id}')">মুছুন</button></td></tr>`).join('');
+
+            const { data: comp } = await sb.from('complaints').select('*').order('created_at', { ascending: false });
+            document.getElementById('complaints-list').innerHTML = (comp || []).map(c => `<tr><td>${c.complaint_type}</td><td>${c.accused_name}</td><td>${c.location}</td><td>${c.details}</td><td>${c.complainant_name || 'গোপন'}</td><td><button class="btn-del" onclick="delItem('complaints','${c.id}')">মুছুন</button></td></tr>`).join('');
+        }
+
+        async function addNews(e) {
+            e.preventDefault();
+            const title = document.getElementById('news-title').value;
+            const slug = 'news-' + Date.now();
+            const summary = document.getElementById('news-summary').value;
+            const content = document.getElementById('news-content').value;
+            const cover_image_url = document.getElementById('news-img').value;
+            const { error } = await sb.from('news').insert([{ title, slug, summary, content, cover_image_url, is_published: true }]);
+            if (error) alert("সমস্যা হয়েছে: " + error.message);
+            else { alert("সংবাদ প্রকাশিত হয়েছে!"); e.target.reset(); loadAllData(); }
+        }
+
+        async function addGallery(e) {
+            e.preventDefault();
+            const title = document.getElementById('gal-title').value;
+            const description = document.getElementById('gal-desc').value;
+            const image_url = document.getElementById('gal-url').value;
+            const { error } = await sb.from('gallery').insert([{ title, description, image_url, is_published: true }]);
+            if (error) alert("সমস্যা হয়েছে: " + error.message);
+            else { alert("ছবি যুক্ত হয়েছে!"); e.target.reset(); loadAllData(); }
+        }
+
+        async function delItem(table, id) {
+            if (confirm("আপনি কি নিশ্চিতভাবে এটি মুছে ফেলতে চান?")) {
+                await sb.from(table).delete().eq('id', id);
+                loadAllData();
+            }
+        }
+    </script>
+</body>
+</html>
